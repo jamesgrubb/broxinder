@@ -24,17 +24,19 @@ font-size: 1rem;
 const ShowcaseDetails = styled.p`
 font-size: 100%;
 `
+
+
+
 const ShowcaseMockup = styled(Img)`
-max-width: 10vmax;
+max-width: 100%;
 align-self: center;
 justify-self: center;
 `
-const ShowcaseWordmark = styled(Img)`
-width: 80vw;
-padding-bottom: 10vmax;
-align-self: bottom;
-`
+const ShowcaseWordmark = styled(ShowcaseMockup)``
 
-export {ShowcaseMockup, Showcase, ShowcaseWordmark}
+const ShowcaseIcon = styled(ShowcaseMockup)``
+
+
+export {ShowcaseMockup, Showcase, ShowcaseWordmark, ShowcaseIcon}
 
 /* ShowcaseWrapper, Showcase, ShowcaseHeadline, ShowcaseDetails, ShowcaseMockup, ShowcaseWordmark */
