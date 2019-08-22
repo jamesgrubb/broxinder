@@ -55,8 +55,6 @@ return(
 <PageWrapper>
 <GlobalStyles />
     {showcase}
-
-<h1>Hello World</h1>
 </PageWrapper>)}
 
 export const query = graphql`

@@ -14,6 +14,12 @@ grid-area: ${props=> props.gridArea};
 
 justify-self: ${props => props.align || "center"};
 margin: ${props => props.margin};
+@media(max-width: 300px){
+justify-self: ${props => props.align || "center"};
+margin: ${props => props.margin};
+
+}
+
 `
 
 
@@ -25,10 +31,17 @@ height: 100%;
 display: flex;
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows: 2fr 4fr;
 flex: 1;
 place-items: center;
 grid-template-areas:
 " I P P "
+" I P P ";
+@media(max-width: 300px){
+    grid-template-areas: 
+" I I I "
+" P P P "
+}
 `
 const ShowcaseHeadline = styled.h2`
 font-size: 1rem;
