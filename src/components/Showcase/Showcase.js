@@ -3,21 +3,25 @@ import Img from "gatsby-image"
 import styled from "styled-components"
 import colors from "colors.css"
 
+
+
 const ShowcaseImageWrapper = styled.div`
-width: 50%;
-grid-area: ${props=> props.gridArea}
+width: ${props => props.width || "50%"};
+transform: rotate(${props => props.rotate||0}deg );
+z-index: ${props => props.zIndex};
+transform-origin: center center;
+grid-area: ${props=> props.gridArea};
+
+justify-self: ${props => props.align || "center"};
+margin: ${props => props.margin};
 `
 
-const ShowcaseWrapper = styled.div`
-height: 100vh;
-display: flex;
-align-items: center;
-justify-content: center
-`
+
 const Showcase = styled.div`
+margin: 10vmax 0;
 background: ${colors.navy};
 width: 100%;
-height: 100vh;
+height: 100%;
 display: flex;
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;
@@ -33,14 +37,16 @@ const ShowcaseDetails = styled.p`
 font-size: 100%;
 `
 const ShowcaseMockup = styled(Img)`
+        
         grid-area: P;    
 `
 const ShowcaseWordmark = styled(ShowcaseMockup)`
+        grid-area: P;    
 
-opacity: 0.3;
 `
 
 const ShowcaseIcon = styled(ShowcaseMockup)`
+        grid-area: I
 `
 
 

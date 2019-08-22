@@ -2,6 +2,29 @@ import React from "react"
 // import {ShowcaseWrapper, Showcase, ShowcaseHeadline, ShowcaseDetails, ShowcaseWordmark, ShowcaseMockup } from "../components/Showcase"
 import {ShowcaseImageWrapper, ShowcaseMockup, Showcase, ShowcaseWordmark, ShowcaseIcon} from "../components/Showcase/Showcase"
 import { graphql } from "gatsby";
+import styled, {createGlobalStyle} from "styled-components"
+import { normalize } from "styled-normalize"
+import colors from "colors.css"
+
+const GlobalStyles = createGlobalStyle`
+@import url("https://fonts.googleapis.com/css?family=Livvic:300,300i,600&display=swap");
+${normalize};
+*{box-sizing: border-box;}
+body{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: ${colors.silver};
+    background: ${colors.navy}
+}
+h1,h2,h3{
+    font-family: "Livvic", sans-serif;
+    color: ${colors.silver};
+    font-weight: 300;
+    font-size: 6vmax;
+}
+`
+const PageWrapper = styled.div`
+margin: 4vmax;
+`
 
 export default ({data}) => {
     const [...mockups] = data.mockups.edges
@@ -16,37 +39,26 @@ export default ({data}) => {
         console.log(mockups[i].node.relativePath)
         showcase.push(
         <Showcase key={logos[i].node.childImageSharp.id}>
-            <ShowcaseImageWrapper>
-            <ShowcaseIcon  loading="auto" fluid={icons[i].node.childImageSharp.fluid} />
+            <ShowcaseImageWrapper width="25%">
+            <ShowcaseIcon loading="auto" fluid={icons[i].node.childImageSharp.fluid} />
             </ShowcaseImageWrapper>
-            <ShowcaseImageWrapper gridArea="P">
+            <ShowcaseImageWrapper zIndex="1" gridArea="P">
             <ShowcaseMockup loading="auto" fluid={mockups[i].node.childImageSharp.fluid} />
             </ShowcaseImageWrapper>
-            <ShowcaseImageWrapper gridArea="P">
+            <ShowcaseImageWrapper margin="0 0 0 -8vmax " align="start" width="80%" rotate="-90" gridArea="P">
             <ShowcaseWordmark loading="auto" fluid={logos[i].node.childImageSharp.fluid} />
             </ShowcaseImageWrapper>
         </Showcase>
         )
     }
 return(
-<div>
+<PageWrapper>
+<GlobalStyles />
     {showcase}
 
 <h1>Hello World</h1>
-</div>)}
+</PageWrapper>)}
 
-const AllShowcases = ({mockups, logos}) => {
-    
-    return (
-    <div>
-        <Showcase mockups={mockups} logos={logos}>
-            {mockups.map((d,i) => <ShowcaseMockup loading="auto" key={d.node.childImageSharp.id} fluid={d.node.childImageSharp.fluid} alt="image"/>)}
-            {logos.map((lg,i) => <ShowcaseWordmark fluid={lg.node.childImageSharp.fluid} />)}
-        </Showcase>
-        }
-    </div>    
-    )
-}
 export const query = graphql`
 query {
     details: allJsonDataJson {
