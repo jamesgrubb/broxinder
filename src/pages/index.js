@@ -16,7 +16,7 @@ export default ({data}) => {
         console.log(mockups[i].node.relativePath)
         showcase.push(
         <Showcase key={logos[i].node.childImageSharp.id}>
-            <ShowcaseIcon imageSstyle={{display: "none"}}style={{width: "100%"}} loading="auto" fluid={icons[i].node.childImageSharp.fluid} />
+            <ShowcaseIcon imageSstyle={display: "none"}style={{width: "100%"}} loading="auto" fluid={icons[i].node.childImageSharp.fluid} />
             <ShowcaseMockup width="40%" style={{width: "100%"}} loading="auto" fluid={mockups[i].node.childImageSharp.fluid} />
             <ShowcaseWordmark style={{width: "100%"}} loading="auto" fluid={logos[i].node.childImageSharp.fluid} />
         </Showcase>
