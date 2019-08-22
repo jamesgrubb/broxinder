@@ -1,6 +1,6 @@
 import React from "react"
 // import {ShowcaseWrapper, Showcase, ShowcaseHeadline, ShowcaseDetails, ShowcaseWordmark, ShowcaseMockup } from "../components/Showcase"
-import {ShowcaseMockup, Showcase, ShowcaseWordmark, ShowcaseIcons} from "../components/Showcase/Showcase"
+import {ShowcaseMockup, Showcase, ShowcaseWordmark, ShowcaseIcon} from "../components/Showcase/Showcase"
 import { graphql } from "gatsby";
 
 export default ({data}) => {
@@ -15,9 +15,10 @@ export default ({data}) => {
     for(let i=0; i< mockups.length; i++){
         console.log(mockups[i].node.relativePath)
         showcase.push(
-        <Showcase>
-        <ShowcaseMockup loading="auto" key={mockups[i].node.child} fluid={mockups[i].node.childImageSharp.fluid} />
-        <ShowcaseWordmark loading="auto" key={logos[i].node.child} fluid={logos[i].node.childImageSharp.fluid} />
+        <Showcase key={logos[i].node.childImageSharp.id}>
+            <ShowcaseIcon imageSstyle={{display: "none"}}style={{width: "100%"}} loading="auto" fluid={icons[i].node.childImageSharp.fluid} />
+            <ShowcaseMockup width="40%" style={{width: "100%"}} loading="auto" fluid={mockups[i].node.childImageSharp.fluid} />
+            <ShowcaseWordmark style={{width: "100%"}} loading="auto" fluid={logos[i].node.childImageSharp.fluid} />
         </Showcase>
         )
     }
@@ -56,7 +57,7 @@ query {
             relativePath
             childImageSharp {
               id
-              fluid(maxWidth: 700, srcSetBreakpoints: [ 200, 340, 520, 890 ]) {
+              fluid(maxWidth: 500, srcSetBreakpoints: [ 200, 340, 520, 800, 890 ]) {
                 base64
                 tracedSVG
                 aspectRatio
@@ -80,7 +81,7 @@ query {
               relativePath
             childImageSharp {
               id
-              fluid {
+              fluid(maxWidth: 500,srcSetBreakpoints: [ 200, 340, 520, 800, 890 ]) {
                 base64
                 tracedSVG
                 aspectRatio
@@ -104,7 +105,7 @@ query {
               relativePath
             childImageSharp {
               id
-              fluid {
+              fluid(maxWidth: 500,srcSetBreakpoints: [ 200, 340, 520, 800, 890 ]) {
                 base64
                 tracedSVG
                 aspectRatio
