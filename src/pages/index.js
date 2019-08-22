@@ -1,6 +1,6 @@
 import React from "react"
 // import {ShowcaseWrapper, Showcase, ShowcaseHeadline, ShowcaseDetails, ShowcaseWordmark, ShowcaseMockup } from "../components/Showcase"
-import {ShowcaseMockup, Showcase, ShowcaseWordmark, ShowcaseIcon} from "../components/Showcase/Showcase"
+import {ShowcaseImageWrapper, ShowcaseMockup, Showcase, ShowcaseWordmark, ShowcaseIcon} from "../components/Showcase/Showcase"
 import { graphql } from "gatsby";
 
 export default ({data}) => {
@@ -16,9 +16,15 @@ export default ({data}) => {
         console.log(mockups[i].node.relativePath)
         showcase.push(
         <Showcase key={logos[i].node.childImageSharp.id}>
-            <ShowcaseIcon imageSstyle={display: "none"}style={{width: "100%"}} loading="auto" fluid={icons[i].node.childImageSharp.fluid} />
-            <ShowcaseMockup width="40%" style={{width: "100%"}} loading="auto" fluid={mockups[i].node.childImageSharp.fluid} />
-            <ShowcaseWordmark style={{width: "100%"}} loading="auto" fluid={logos[i].node.childImageSharp.fluid} />
+            <ShowcaseImageWrapper>
+            <ShowcaseIcon  loading="auto" fluid={icons[i].node.childImageSharp.fluid} />
+            </ShowcaseImageWrapper>
+            <ShowcaseImageWrapper gridArea="P">
+            <ShowcaseMockup loading="auto" fluid={mockups[i].node.childImageSharp.fluid} />
+            </ShowcaseImageWrapper>
+            <ShowcaseImageWrapper gridArea="P">
+            <ShowcaseWordmark loading="auto" fluid={logos[i].node.childImageSharp.fluid} />
+            </ShowcaseImageWrapper>
         </Showcase>
         )
     }

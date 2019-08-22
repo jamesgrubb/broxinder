@@ -1,7 +1,12 @@
 import React from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
+import colors from "colors.css"
 
+const ShowcaseImageWrapper = styled.div`
+width: 50%;
+grid-area: ${props=> props.gridArea}
+`
 
 const ShowcaseWrapper = styled.div`
 height: 100vh;
@@ -10,11 +15,13 @@ align-items: center;
 justify-content: center
 `
 const Showcase = styled.div`
-background: cornflowerblue;
+background: ${colors.navy};
 width: 100%;
 height: 100vh;
+display: flex;
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;
+flex: 1;
 place-items: center;
 grid-template-areas:
 " I P P "
@@ -26,28 +33,7 @@ const ShowcaseDetails = styled.p`
 font-size: 100%;
 `
 const ShowcaseMockup = styled(Img)`
-    
-    grid-area: P;
-    
-    display: grid !important;
-       div[style]:empty {
-        padding: 0 !important;    
-/*      
-        
-        border: 1px solid red;
-        padding: 0 !important; */
-    }
-    
-    picture > img{
-    position: relative !important;        
-    width: ${props => props.width || "60%"} !important;    
-    height: auto !important;
-    align-self: center !important!;
-    };
-    > img {
-    width: ${props => props.width || "60%"} !important;            
-    height: auto !important;
-    }
+        grid-area: P;    
 `
 const ShowcaseWordmark = styled(ShowcaseMockup)`
 
@@ -55,19 +41,9 @@ opacity: 0.3;
 `
 
 const ShowcaseIcon = styled(ShowcaseMockup)`
-
-    display: grid;
-    place-items: center;
-
-picture > img{    
-    
-    width: 70%;
-    };
-
-grid-area: I;
 `
 
 
-export {ShowcaseMockup, Showcase, ShowcaseWordmark, ShowcaseIcon}
+export {ShowcaseMockup, Showcase, ShowcaseWordmark, ShowcaseIcon, ShowcaseImageWrapper}
 
 /* ShowcaseWrapper, Showcase, ShowcaseHeadline, ShowcaseDetails, ShowcaseMockup, ShowcaseWordmark */
